@@ -52,7 +52,7 @@ btnGUARDAR.setOnClickListener(new View.OnClickListener() {
     public void onClick(View view) {
         if (posicion == -1) {
             if (!edtDATO1.getText().toString().isEmpty() && !edtDATO2.getText().toString().isEmpty()) {
-                Principal.lista.add(new Dato(edtDATO1.getText().toString(), edtDATO2.getText().toString()));
+                Principal.lista.add(new Dato(Double.parseDouble(edtDATO1.getText().toString()), Double.parseDouble(edtDATO2.getText().toString())));
                 guardarArchivo();
             } else {
                 Toast toast = Toast.makeText(getApplicationContext(), "Dejó un campo Vacío", Toast.LENGTH_SHORT);
@@ -60,8 +60,8 @@ btnGUARDAR.setOnClickListener(new View.OnClickListener() {
             }
         }else{
             dato = Principal.lista.get(posicion);
-            dato.dato1 = edtDATO1.getText().toString();
-            dato.dato2 = edtDATO2.getText().toString();
+            dato.dato1 = Double.parseDouble(edtDATO1.getText().toString());
+            dato.dato2 = Double.parseDouble(edtDATO2.getText().toString());
             guardarArchivo();
             posicion = 0;
         }

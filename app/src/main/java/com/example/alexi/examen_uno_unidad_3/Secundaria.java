@@ -19,7 +19,7 @@ public class Secundaria extends AppCompatActivity {
     ListView lv;
     Button btnCalcular;
     Dato Dato;
-    String dato1, dato2;
+    Double dato1, dato2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +59,7 @@ public class Secundaria extends AppCompatActivity {
 
     public void cargarArchivo(){
         try{
-            File file=new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),"obje.obje");
+            File file=new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),"obje.obje");
             if(hasExternalStorage()&&file.exists()){
                 ObjectInputStream stream=new ObjectInputStream(new FileInputStream(file));
                 Principal.lista= (ArrayList<Dato>) stream.readObject();
@@ -70,7 +70,7 @@ public class Secundaria extends AppCompatActivity {
 
     }
     public void actualizarLista(){
-        ArrayList<String> datos=new ArrayList<>();
+        ArrayList<Double> datos=new ArrayList<>();
         for (Dato c: Principal.lista){
             datos.add(c.dato1);
         }

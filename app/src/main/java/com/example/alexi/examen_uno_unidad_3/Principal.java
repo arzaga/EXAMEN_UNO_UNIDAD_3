@@ -38,7 +38,7 @@ EditText edtDato1,edtDato2;
             public void onClick(View view) {
                 if (posicion == -1) {
                     if (!edtDato1.getText().toString().isEmpty() && !edtDato2.getText().toString().isEmpty()) {
-                        lista.add(new Dato(edtDato1.getText().toString(), edtDato2.getText().toString()));
+                        lista.add(new Dato(Double.parseDouble(edtDato1.getText().toString()), Double.parseDouble(edtDato2.getText().toString())));
                         guardarArchivo();
                     } else {
                         Toast toast = Toast.makeText(getApplicationContext(), "Dejó un campo Vacío", Toast.LENGTH_SHORT);
@@ -46,10 +46,18 @@ EditText edtDato1,edtDato2;
                     }
                 }else{
                     dato = lista.get(posicion);
-                    dato.dato1 = edtDato1.getText().toString();
-                    dato.dato2 = edtDato2.getText().toString();
-                    guardarArchivo();
-                    posicion = 0;
+                    Dato d;
+                    int p = lista.size();
+                    d = lista.get(p-1);
+                    if(d.dato1== Double.parseDouble(edtDato1.getText().toString()) || d.dato2== Double.parseDouble(edtDato2.getText().toString())){
+                        Toast.makeText(Principal.this, "Datos Repetidos", Toast.LENGTH_SHORT).show();
+                    }else{
+                        dato.dato1 = Double.parseDouble(edtDato1.getText().toString());
+                        dato.dato2 = Double.parseDouble(edtDato2.getText().toString());
+                        guardarArchivo();
+                        posicion = 0;
+                    }
+
                 }
             }
         });
@@ -66,7 +74,7 @@ EditText edtDato1,edtDato2;
     public void guardarArchivo() {
         try {
             if (hasExternalStorage()) {
-                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "obje.obje");
+                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "obje.obje");
                 ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file,false));
                 stream.writeObject(lista);
                 stream.close();

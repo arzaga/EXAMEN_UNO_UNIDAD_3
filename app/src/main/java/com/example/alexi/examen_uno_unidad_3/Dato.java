@@ -7,10 +7,12 @@ import java.io.Serializable;
  */
 
 public class Dato implements Serializable{
-    String dato1, dato2;
+    Double dato1, dato2;
 
-    public Dato(String dato1, String... datos){
+    public Dato(Double dato1, Double... datos){
         this.dato1 = dato1;
         dato2 = datos[0];
     }
+
+
 }
