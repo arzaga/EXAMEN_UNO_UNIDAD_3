@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top|center"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    tools:context="com.example.alexi.examen_uno_unidad_3.Principal">
+
+    <EditText
+        android:id="@+id/edtDato1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Dato 1"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edtDato2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Dato 2"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btnAgregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:text="Agregar" />
+
+    <Button
+        android:id="@+id/btnSecundaria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:text="SEGUNDA ACTIVIDAD" />
+
+</LinearLayout>
