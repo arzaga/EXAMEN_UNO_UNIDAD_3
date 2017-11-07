@@ -17,7 +17,7 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="Dato 1"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/edtDato2"
@@ -27,7 +27,7 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="Dato 2"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
     <Button
         android:id="@+id/btnAgregar"

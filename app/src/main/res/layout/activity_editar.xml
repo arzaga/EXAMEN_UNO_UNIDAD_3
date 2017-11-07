@@ -15,8 +15,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="number"
+        android:hint="Name" />
 
     <EditText
         android:id="@+id/edtDATO2"
@@ -24,8 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="number"
+        android:hint="Name" />
 
     <LinearLayout
         android:layout_width="wrap_content"
