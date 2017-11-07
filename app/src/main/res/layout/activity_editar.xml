@@ -9,7 +9,7 @@
     tools:context="com.example.alexi.examen_uno_unidad_3.Editar">
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/edtDATO1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -19,7 +19,7 @@
         android:text="Name" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/edtDATO2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -34,14 +34,14 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btnGUARDAR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"
             android:text="GUARDAR" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnBORRAR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"

@@ -45,7 +45,7 @@ EditText edtDato1,edtDato2;
                         toast.show();
                     }
                 }else{
-                    dato = Principal.lista.get(posicion);
+                    dato = lista.get(posicion);
                     dato.dato1 = edtDato1.getText().toString();
                     dato.dato2 = edtDato2.getText().toString();
                     guardarArchivo();
@@ -63,33 +63,12 @@ EditText edtDato1,edtDato2;
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        cargarArchivo();
-//        actualizarLista();
-    }
-
-    public void cargarArchivo(){
-        try{
-            File file=new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),"obj.obj");
-            if(hasExternalStorage()&&file.exists()){
-                ObjectInputStream stream=new ObjectInputStream(new FileInputStream(file));
-                lista= (ArrayList<Dato>) stream.readObject();
-                stream.close();
-            }
-
-        }catch(Exception e){}
-
-    }
-
-
     public void guardarArchivo() {
         try {
             if (hasExternalStorage()) {
-                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "obj.obj");
+                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "obje.obje");
                 ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file,false));
-                stream.writeObject(Principal.lista);
+                stream.writeObject(lista);
                 stream.close();
             }
 
