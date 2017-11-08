@@ -54,7 +54,7 @@ btnGUARDAR.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         Dato num1;
-        num1 = Principal.lista.get(posiActual);
+        num1 = Principal.lista.get(posicion-1);
         if(num1.dato1 == Double.parseDouble(edtDATO1.getText().toString())||num1.dato2 == Double.parseDouble(edtDATO2.getText().toString())){
             Toast.makeText(Editar.this, "Datos Repetidos", Toast.LENGTH_SHORT).show();
         }else{
