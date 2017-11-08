@@ -32,7 +32,7 @@ public class Secundaria extends AppCompatActivity {
             public void onClick(View view) {
                 int tamano;
                 tamano = Principal.lista.size();
-                if(tamano==5){
+                if(tamano>=5){
                     Dato num1,num2,num3;
                     int p1,p2,p3;
 
