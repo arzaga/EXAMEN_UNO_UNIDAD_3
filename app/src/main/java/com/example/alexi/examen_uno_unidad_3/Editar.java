@@ -19,6 +19,7 @@ public class Editar extends AppCompatActivity {
     EditText edtDATO1,edtDATO2;
     Button btnGUARDAR,btnBORRAR;
     int posicion = -1;
+    int posiActual;
     Dato dato;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class Editar extends AppCompatActivity {
             edtDATO1.setText(getIntent().getExtras().getString("DATO1"));
             edtDATO2.setText(getIntent().getExtras().getString("DATO2"));
             posicion = getIntent().getExtras().getInt("posicion");
+            posiActual = getIntent().getExtras().getInt("posicion");
+
         }catch (Exception e){
 
         }
@@ -50,21 +53,29 @@ public class Editar extends AppCompatActivity {
 btnGUARDAR.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-        if (posicion == -1) {
-            if (!edtDATO1.getText().toString().isEmpty() && !edtDATO2.getText().toString().isEmpty()) {
-                Principal.lista.add(new Dato(Double.parseDouble(edtDATO1.getText().toString()), Double.parseDouble(edtDATO2.getText().toString())));
-                guardarArchivo();
-            } else {
-                Toast toast = Toast.makeText(getApplicationContext(), "Dejó un campo Vacío", Toast.LENGTH_SHORT);
-                toast.show();
-            }
+        Dato num1;
+        num1 = Principal.lista.get(posiActual);
+        if(num1.dato1 == Double.parseDouble(edtDATO1.getText().toString())||num1.dato2 == Double.parseDouble(edtDATO2.getText().toString())){
+            Toast.makeText(Editar.this, "Datos Repetidos", Toast.LENGTH_SHORT).show();
         }else{
-            dato = Principal.lista.get(posicion);
-            dato.dato1 = Double.parseDouble(edtDATO1.getText().toString());
-            dato.dato2 = Double.parseDouble(edtDATO2.getText().toString());
-            guardarArchivo();
-            posicion = 0;
+            if (posicion == -1) {
+                if (!edtDATO1.getText().toString().isEmpty() && !edtDATO2.getText().toString().isEmpty()) {
+                    Principal.lista.add(new Dato(Double.parseDouble(edtDATO1.getText().toString()), Double.parseDouble(edtDATO2.getText().toString())));
+                    guardarArchivo();
+                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Dejó un campo Vacío", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            }else{
+                dato = Principal.lista.get(posicion);
+                dato.dato1 = Double.parseDouble(edtDATO1.getText().toString());
+                dato.dato2 = Double.parseDouble(edtDATO2.getText().toString());
+                guardarArchivo();
+                posicion = 0;
+            }
         }
+
+
         Intent intPrin = new Intent(getApplicationContext(),Principal.class);
         startActivity(intPrin);
         finish();

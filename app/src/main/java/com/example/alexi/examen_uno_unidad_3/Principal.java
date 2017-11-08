@@ -33,31 +33,39 @@ EditText edtDato1,edtDato2;
         edtDato2 = (EditText)findViewById(R.id.edtDato2);
         btnAgregar = (Button)findViewById(R.id.btnAgregar);
         btnSecundaria = (Button)findViewById(R.id.btnSecundaria);
+        lista.add(new Dato(1.0,2.0));
+        if(lista.isEmpty()){
+            Toast.makeText(this, "VACIA", Toast.LENGTH_SHORT).show();
+        }
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (posicion == -1) {
-                    if (!edtDato1.getText().toString().isEmpty() && !edtDato2.getText().toString().isEmpty()) {
-                        lista.add(new Dato(Double.parseDouble(edtDato1.getText().toString()), Double.parseDouble(edtDato2.getText().toString())));
-                        guardarArchivo();
-                    } else {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Dejó un campo Vacío", Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
+                Dato num1;
+                int p1;
+
+                p1 = Principal.lista.size()-1;
+                num1 = Principal.lista.get(p1);
+
+                if(num1.dato1==Double.parseDouble(edtDato1.getText().toString())||num1.dato2==Double.parseDouble(edtDato2.getText().toString())){
+                    Toast.makeText(Principal.this, "Datos Repetidos", Toast.LENGTH_SHORT).show();
                 }else{
-                    dato = lista.get(posicion);
-                    Dato d;
-                    int p = lista.size();
-                    d = lista.get(p-1);
-                    if(d.dato1== Double.parseDouble(edtDato1.getText().toString()) || d.dato2== Double.parseDouble(edtDato2.getText().toString())){
-                        Toast.makeText(Principal.this, "Datos Repetidos", Toast.LENGTH_SHORT).show();
+                    if (posicion == -1) {
+                        if (!edtDato1.getText().toString().isEmpty() && !edtDato2.getText().toString().isEmpty()) {
+                            lista.add(new Dato(Double.parseDouble(edtDato1.getText().toString()), Double.parseDouble(edtDato2.getText().toString())));
+                            guardarArchivo();
+                            edtDato1.setText("");
+                            edtDato2.setText("");
+                        } else {
+                            Toast toast = Toast.makeText(getApplicationContext(), "Dejó un campo Vacío", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
                     }else{
+                        dato = lista.get(posicion);
                         dato.dato1 = Double.parseDouble(edtDato1.getText().toString());
                         dato.dato2 = Double.parseDouble(edtDato2.getText().toString());
                         guardarArchivo();
                         posicion = 0;
                     }
-
                 }
             }
         });
